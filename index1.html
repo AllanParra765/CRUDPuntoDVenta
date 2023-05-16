@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Escanear código de barras</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Agregar los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Agregar los archivos JS de Quagga.js y Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Escanear código de barras</h1>
+
+        <div id="scanner-container"></div>
+
+        <div class="input-group mt-3">
+            <input type="text" id="barcodeResult" class="form-control" placeholder="Resultado del escaneo">
+            <div class="input-group-append">
+                <button id="scanButton" class="btn btn-primary" type="button">
+                    <i class="fas fa-barcode"></i> Escanear
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtén referencias a los elementos del DOM
+            var scanButton = document.getElementById("scanButton");
+            var barcodeResult = document.getElementById("barcodeResult");
+
+            // Agrega un evento de clic al botón de escaneo
+            scanButton.addEventListener("click", function() {
+                // Inicializa Quagga.js con la configuración del escáner
+                Quagga.init({
+                    inputStream: {
+                        name: "Live",
+                        type: "LiveStream",
+                        target: document.querySelector("#scanner-container"),
+                        constraints: {
+                            width: 480,
+                            height: 320,
+                            facingMode: "environment" // Opcional: usa la cámara trasera en dispositivos móviles
+                        }
+                    },
+                    decoder: {
+                        readers: ["ean_reader", "ean_8_reader", "code_128_reader", "code_39_reader", "code_39_vin_reader", "codabar_reader", "upc_reader", "upc_e_reader", "i2of5_reader"] // Especificar el tipo de código de barras a escanear
+		// Configura los tipos de códigos de barras que deseas escanear
+                    }
+                }, function(err) {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    // Inicia el escaneo
+                    Quagga.start();
+                });
+
+                // Agrega un controlador de eventos para capturar el código de barras escaneado
+                Quagga.onDetected(function(result) {
+                    // Detén el escaneo después de encontrar un código de barras
+                    Quagga.stop();
+
+                    // Obtiene el código de barras escaneado
+                    var code = result.codeResult.code;
+
+                    // Establece el resultado en el campo de texto
+                    barcodeResult.value = code;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
