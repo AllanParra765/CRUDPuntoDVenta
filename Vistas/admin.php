@@ -74,28 +74,28 @@ $_SESSION['expire'] = time() + $tiempoLimite;
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="inventarios.php"><i class="fas fa-box"></i>Ventas</a>
+					<a class="nav-link" href="#"  data-toggle="modal" data-target="#myModal"><i class="fas fa-box"></i>Ventas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="modal" data-target="#myModal" href="#"><i class="fas fa-plus" data-toggle="modal" data-target="#myModal"></i> Inventario</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Reportes</a>
+					<a class="nav-link" href="#" data-toggle="modal" data-target="#reportModal"><i class="fas fa-chart-bar"></i> Reportes</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link"href="registroUsuarios.php"><i class="fas fa-user-plus"></i>Registrar usuario</a>
+					<a class="nav-link"href="#" data-toggle="modal" data-target="#registroModal"><i class="fas fa-user-plus"></i>Registrar usuario</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+					<a class="nav-link" href="../Controlador/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 </div>
 
-    <!-- Modal -->
+    <!-- Modal Registrar Productos-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -167,13 +167,6 @@ $_SESSION['expire'] = time() + $tiempoLimite;
     </div>
 </div>
 
-
-<!--Modal de agregar USUARIO-->
-<!-- Botón para abrir el modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroModal">
-    Registrar usuario
-</button>
-
 <!-- Modal de Registro de Usuario -->
 <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -229,6 +222,241 @@ $_SESSION['expire'] = time() + $tiempoLimite;
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+<!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">
+  <i class="fas fa-plus"></i> Agregar Venta
+</button>
+
+<!-- Modal para agregar producto -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalLabel">Agregar Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#removeProductModal">
+          <i class="fas fa-plus"></i> Agregar Producto
+        </button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#removeProductModal">
+          <i class="fas fa-minus"></i> Quitar Producto
+        </button>
+        
+        <!-- Aquí puedes agregar el código para el escáner con Quagga.js -->
+        
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#productListModal">
+          <i class="fas fa-list"></i> Ver Lista 
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Cancelar Compra</button>
+        <button type="button" class="btn btn-success" onclick="cobrarCompra()"><i class="fas fa-cash-register"></i> Cobrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para quitar producto -->
+<div class="modal fade" id="removeProductModal" tabindex="-1" role="dialog" aria-labelledby="removeProductModalLabel" aria-hidden="true">
+  <!-- Contenido del modal para quitar producto -->
+</div>
+
+<!-- Modal para ver lista de productos -->
+<div class="modal fade" id="productListModal" tabindex="-1" role="dialog" aria-labelledby="productListModalLabel" aria-hidden="true">
+  <!-- Contenido del modal para ver lista de productos -->
+</div>
+
+
+<!-- Modal para quitar producto -->
+<div class="modal fade" id="removeProductModal" tabindex="-1" role="dialog" aria-labelledby="removeProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeProductModalLabel">Quitar Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Selecciona los productos que deseas quitar:</p>
+        
+        <!-- Aquí puedes agregar la lista de productos con checkboxes -->
+        
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="producto1" id="checkboxProducto1">
+          <label class="form-check-label" for="checkboxProducto1">
+            Producto 1
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="producto2" id="checkboxProducto2">
+          <label class="form-check-label" for="checkboxProducto2">
+            Producto 2
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="producto3" id="checkboxProducto3">
+          <label class="form-check-label" for="checkboxProducto3">
+            Producto 3
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+        <button type="button" class="btn btn-danger" onclick="quitarProductos()"><i class="fas fa-trash"></i> Quitar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal para ver la lista de productos -->
+<div class="modal fade" id="productListModal" tabindex="-1" role="dialog" aria-labelledby="productListModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productListModalLabel">Lista de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Código de Barras</th>
+              <th>Nombre Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Precio Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí puedes iterar sobre los productos y generar las filas de la tabla -->
+            <tr>
+              <td>1234567890</td>
+              <td>Producto 1</td>
+              <td>2</td>
+              <td>$10.00</td>
+              <td>$20.00</td>
+            </tr>
+            <tr>
+              <td>0987654321</td>
+              <td>Producto 2</td>
+              <td>1</td>
+              <td>$15.00</td>
+              <td>$15.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  function cobrarCompra() {
+    // Lógica para cobrar la compra
+  }
+</script>
+
+
+
+
+
+
+
+
+<!-- Modal Reportes-->
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reportModalLabel">Generar Reporte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="startDate">Fecha de inicio:</label>
+            <input type="date" class="form-control" id="startDate">
+          </div>
+          <div class="form-group">
+            <label for="endDate">Fecha fin:</label>
+            <input type="date" class="form-control" id="endDate">
+          </div>
+          <div class="form-group">
+            <label for="reportType">Tipo de reporte:</label>
+            <select class="form-control" id="reportType">
+              <option value="ventas">Ventas</option>
+              <option value="inventario">Inventario</option>
+              <option value="clientes">Clientes</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="generarReporte()"><i class="fas fa-file-export"></i> Generar Reporte</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alerta para mostrar el resultado -->
+<div class="alert alert-success alert-dismissible fade" role="alert" id="reportAlert">
+  <strong>¡Éxito!</strong> El reporte se generó correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<script>
+  function generarReporte() {
+    // Obtener los valores de los campos
+    var startDate = document.getElementById('startDate').value;
+    var endDate = document.getElementById('endDate').value;
+    var reportType = document.getElementById('reportType').value;
+
+    // Aquí puedes realizar las operaciones necesarias para generar el reporte
+
+    // Mostrar la alerta
+    document.getElementById('reportAlert').classList.add('show');
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Agregar los archivos JS de Bootstrap y Font Awesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

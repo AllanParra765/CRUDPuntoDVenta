@@ -49,7 +49,7 @@ $_SESSION['expire'] = time() + $tiempoLimite;
             </select>
 			
             <input class="mt-4 mr-4" type="submit" value="Iniciar sesión">
-            <a href="Vistas/registroUsuarios.php" >Registrarse</a>
+     
         </form>
     </div>
 </body>
