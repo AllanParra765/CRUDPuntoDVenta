@@ -38,3 +38,4 @@ if (isset($_SESSION['expire'])) {
 $_SESSION['expire'] = time() + $tiempoLimite;
 
 ?>
+

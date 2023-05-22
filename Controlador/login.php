@@ -1,6 +1,7 @@
+
 <?php
 include "sesiones/headerSesion.php";
-include "../bd/db_connection.php";
+include "bd/db_connection.php";
 
 // Comprobar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
