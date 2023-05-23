@@ -20,6 +20,7 @@ include "partials/headerEmpleado.php";
     <li class="nav-item">
       <a class="nav-link" href="#"><i class="fa fa-archive"></i> Inventario</a>
     </li>
+    <!--
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-chart-bar"></i> Reportes
@@ -30,8 +31,9 @@ include "partials/headerEmpleado.php";
         <a class="dropdown-item" href="#">Reporte 3</a>
       </div>
     </li>
+-->
     <li class="nav-item">
-      <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
+      <a class="nav-link" href="../Controlador/logout.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
     </li>
   </ul>
 </div>
@@ -40,7 +42,7 @@ include "partials/headerEmpleado.php";
 <?php
   include "partialsProducto/RegistrarProducto.php";
   // Modal de Registro de Usuario 
-  //include "partialsUsuario/RegistrarUsuario.php";
+  include "partialsUsuario/RegistrarUsuario.php";
   //Modal Reportes
   //include "partialsReporte/GenerarReporte.php";
   //Footer de la pagina
