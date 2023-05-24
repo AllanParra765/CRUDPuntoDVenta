@@ -15,7 +15,7 @@ include "partials/headerAdmin.php";
 					<a class="nav-link" href="#"  data-toggle="modal" data-target="#myModal"><i class="fas fa-box"></i>Ventas</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" data-toggle="modal" data-target="#myModal" href="#"><i class="fas fa-plus" data-toggle="modal" data-target="#myModal"></i> Inventario</a>
+					<a class="nav-link" data-toggle="modal" data-target="#myModal" href="#"><i class="fas fa-plus" data-toggle="modal"></i> Inventario</a>
 				</li>
                 <li class="nav-item">
 					<a class="nav-link" href="#" data-toggle="modal" data-target="#reportModal"><i class="fas fa-chart-bar"></i> Reportes</a>

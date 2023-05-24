@@ -1,26 +1,5 @@
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Escanear código de barras</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Agregar los archivos CSS de Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-     <!-- Iconos de Font Awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- Agregar los archivos JS de Quagga.js y Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
-   <style>
-    .drawingBuffer {
-  display: none;
-}
-   </style>
-</head>
-<body>
 
 <!-- Modal de Escaneo de Código de Barras -->
 <div class="modal fade" id="scanModal" tabindex="-1" role="dialog" aria-labelledby="scanModalLabel" aria-hidden="true">
@@ -64,13 +43,6 @@
 </div>
 
 
-
-<!-- Botones para abrir los modales -->
-<div class="text-center">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal">
-    <i class="fas fa-barcode"></i> Escanear Código de Barras
-  </button>
-</div>
 
 <script>
   var productos = []; // Array para almacenar los productos agregados
@@ -189,17 +161,4 @@
     // Aquí puedes redirigir a la página de impresión del ticket
   }
 </script>
-
-</body>
-<!-- Asegúrate de incluir las dependencias de Bootstrap y Font Awesome en tu proyecto -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<!-- Incluir QuaggaJS -->
-	<script src="js/quagga.js"></script>
-
-	<!-- Agregar tu script de JavaScript -->
-	<script src="js/escanerarchivo.js"></script>
-
-  </html>
 

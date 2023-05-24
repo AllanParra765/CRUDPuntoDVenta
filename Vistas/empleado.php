@@ -15,10 +15,11 @@ include "partials/headerEmpleado.php";
       <a class="nav-link" href="#"><i class="fa fa-home"></i> Inicio</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart"></i> Ventas</a>
+      <a class="nav-link" href="#" data-toggle="modal"  data-target="#scanModal"><i class="fa fa-shopping-cart"></i> Ventas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"><i class="fa fa-archive"></i> Inventario</a>
+     
+      <a class="nav-link" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-archive" data-toggle="modal"></i> Inventario</a>
     </li>
     
     <li class="nav-item dropdown">
@@ -39,8 +40,13 @@ include "partials/headerEmpleado.php";
 </div>
 </nav>
 
+
+
 <?php
+
   include "partialsProducto/RegistrarProducto.php";
+  // Modal Venta de Productos
+  include "partialsVentas/VentasProductos.php"; 
   // Modal de Registro de Usuario 
   //include "partialsUsuario/RegistrarUsuario.php";
   //Modal Reportes
@@ -53,29 +59,3 @@ include "partials/headerEmpleado.php";
 
 
 http://localhost:8888/CRUDPUNTODVENTA/Vistas/empleado.php#
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Implementar QuaggaJS</title>
-</head>
-<body>
-	<h1>Escanear código de barras</h1>
-
-	<!-- Agregar un botón para activar la cámara -->
-	<button id="scan-button">Escanear código</button>
-
-	<!-- Agregar un elemento para mostrar la imagen de la cámara -->
-	<div id="camera-preview"></div>
-
-	<!-- Incluir QuaggaJS -->
-	<script src="../js/quagga.js"></script>
-
-	<!-- Agregar tu script de JavaScript -->
-	<script src="../js/escanerarchivo.js"></script>
-</body>
-
-
-</html>

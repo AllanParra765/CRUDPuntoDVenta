@@ -9,11 +9,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                <button type="button" class="btn btn-primary btn-block">
+                    <i class="fas fa-barcode"></i> Escanear Producto
+                </button>
+                <button class="btn btn-info btn-block" type="button">
+                    <i class="fas fa-search"></i> Buscar Producto
+                </button>
+                <br>
                     <form>
                         <div class="form-group">
                             <label for="id_Producto">ID código producto:</label>
                             <input type="text" class="form-control" id="id_Producto">
                         </div>
+<hr>
+<br>
                         <div class="form-group">
                             <label for="Nombre_producto">Nombre Producto:</label>
                             <input type="text" class="form-control" id="Nombre_producto">
@@ -45,31 +54,10 @@
                             <label for="Comentarios">Comentarios:</label>
                             <textarea class="form-control" id="Comentarios" rows="3"></textarea>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-<div class="row">
-    <div class="col mb-3">
-        <button class="btn btn-info btn-block" type="button">
-            <i class="fas fa-search"></i> Buscar Producto
-        </button>
-    </div>
-    <div class="col mb-3">
-        <button type="button" class="btn btn-primary btn-block">
-            <i class="fas fa-barcode"></i> Escanear Producto
-        </button>
-    </div>
-    <div class="col mb-3">
-        <button type="button" class="btn btn-success btn-block">
+                        <button type="button" class="btn btn-success btn-block">
             <i class="fas fa-save"></i> Registrar Producto
         </button>
-    </div>
-    <div class="col mb-3">
-        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">
-            <i class="fas fa-times"></i> Cerrar
-        </button>
-    </div>
-</div>                    
+                    </form>
                 </div>
                 
             </div>

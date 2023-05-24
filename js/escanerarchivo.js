@@ -45,7 +45,9 @@ scanButton.addEventListener('click', function() {
 
 			// Hacer algo con el código de barras escaneado (por ejemplo, cargar la información del producto en los campos del formulario)
 			document.getElementById('codigoBarras').value = barcode;
-			alert(barcode);
+			var audio = new Audio("img/barcode.wav");
+  			audio.play();
+			//alert(barcode);
 		});
 	});
 
