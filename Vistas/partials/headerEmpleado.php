@@ -1,6 +1,6 @@
 <?php
 // Establecer el tiempo límite de la sesión en segundos (por ejemplo, 30 minutos)
-$tiempoLimite =90; //1800 30 minutos
+$tiempoLimite =1800; //1800 30 minutos
 session_start();
 
 // Verificar si hay un mensaje de alerta en la sesión

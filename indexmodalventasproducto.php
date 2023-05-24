@@ -14,7 +14,11 @@
 
     <!-- Agregar los archivos JS de Quagga.js y Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
-   
+   <style>
+    .drawingBuffer {
+  display: none;
+}
+   </style>
 </head>
 <body>
 
@@ -29,48 +33,38 @@
         </button>
       </div>
       <div class="modal-body">
-        <button type="button" class="btn btn-primary" onclick="scanearCodigoBarras()"><i class="fas fa-barcode"></i> Escanear</button>
-        <input type="text" class="form-control mt-3" id="codigoBarras" placeholder="Código de Barras" readonly>
+      <button id="scan-button" type="button" class="btn btn-primary" ><i class="fas fa-barcode"></i> Escanear</button>
+     
+       <input type="text" class="form-control mt-3" id="codigoBarras" placeholder="Código de Barras" >
+
+
+
+      <br>
+      <button type="button" class="btn btn-success" onclick="agregarProducto()"><i class="fas fa-plus"></i> Agregar a la Lista</button>
+      <br>
+      <br>
+      <h5 class="modal-title" id="listaModalLabel">Lista de Productos</h5>
+       
+        <hr>
+        <ul id="productosLista" class="list-group"></ul>
+        <hr>
+        <h4>Total a Cobrar: <span id="totalCobrar">$0.00</span></h4>
       </div>
+      <div id="camera-preview" class=" ml-md-5 pl-md-4"></div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
-        <button type="button" class="btn btn-success" onclick="agregarProducto()"><i class="fas fa-plus"></i> Agregar a la Lista</button>
+        <button id="scan-cobrar" type="button" class="btn btn-success" onclick="cobrar()"><i class="fas fa-money-bill"></i> Cobrar</button>
+        <button id="scan-cancelar" type="button" class="btn btn-danger" onclick="cancelarCompra()"><i class="fas fa-times-circle"></i> Cancelar Compra</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal de Lista de Productos y Total a Cobrar -->
-<div class="modal fade" id="listaModal" tabindex="-1" role="dialog" aria-labelledby="listaModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="listaModalLabel">Lista de Productos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <ul id="productosLista" class="list-group"></ul>
-        <hr>
-        <h4>Total a Cobrar: <span id="totalCobrar">$0.00</span></h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
-        <button type="button" class="btn btn-danger" onclick="cancelarCompra()"><i class="fas fa-times-circle"></i> Cancelar Compra</button>
-        <button type="button" class="btn btn-success" onclick="cobrar()"><i class="fas fa-money-bill"></i> Cobrar</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- Botones para abrir los modales -->
 <div class="text-center">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scanModal">
     <i class="fas fa-barcode"></i> Escanear Código de Barras
-  </button>
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#listaModal">
-    <i class="fas fa-list"></i> Ver Lista de Productos
   </button>
 </div>
 
@@ -78,14 +72,17 @@
   var productos = []; // Array para almacenar los productos agregados
 
   // Función para escanear el código de barras
-  function scanearCodigoBarras() {
+  //function scanearCodigoBarras() {
+
+    
     // Aquí puedes agregar la lógica para escanear el código de barras
 
     // Ejemplo: Generar un código de barras aleatorio
-    var codigoBarras = Math.floor(Math.random() * 1000000000000).toString();
+   // var codigoBarras = Math.floor(Math.random() * 1000000000000).toString();
 
-    document.getElementById('codigoBarras').value = codigoBarras;
-  }
+    //document.getElementById('codigoBarras').value = codigoBarras;
+   // document.getElementById('codigoBarras').value = codigoBarras;
+  //}
 
   // Función para agregar un producto a la lista
   function agregarProducto() {
@@ -107,32 +104,41 @@
     actualizarListaProductos();
     limpiarCampoCodigoBarras();
 
-    $('#scanModal').modal('hide'); // Cerrar el modal de escaneo
+   // $('#scanModal').modal('hide'); // Cerrar el modal de escaneo
   }
 
   // Función para actualizar la lista de productos en el modal
   function actualizarListaProductos() {
-    var listaProductos = document.getElementById('productosLista');
-    listaProductos.innerHTML = '';
+  var listaProductos = document.getElementById('productosLista');
+  listaProductos.innerHTML = '';
 
-    productos.forEach(function (producto) {
-      var listItem = document.createElement('li');
-      listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-      listItem.innerHTML = producto.nombre + ' - $' + producto.precio.toFixed(2);
+  productos.forEach(function (producto) {
+    var listItem = document.createElement('li');
+    listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+    listItem.innerHTML = producto.nombre + ' - $' + producto.precio.toFixed(2);
 
-      var removeButton = document.createElement('button');
-      removeButton.className = 'btn btn-danger btn-sm';
-      removeButton.innerHTML = '<i class="fas fa-times"></i>';
-      removeButton.addEventListener('click', function () {
-        eliminarProducto(producto.codigoBarras);
-      });
-
-      listItem.appendChild(removeButton);
-      listaProductos.appendChild(listItem);
+    var removeButton = document.createElement('button');
+    removeButton.className = 'btn btn-danger btn-sm mr-2';
+    removeButton.innerHTML = '<i class="fas fa-times"></i>';
+    removeButton.addEventListener('click', function () {
+      eliminarProducto(producto.codigoBarras);
     });
 
-    actualizarTotalCobrar();
-  }
+    var duplicateButton = document.createElement('button');
+    duplicateButton.className = 'btn btn-primary btn-sm';
+    duplicateButton.innerHTML = '<i class="fas fa-clone"></i>';
+    duplicateButton.addEventListener('click', function () {
+      duplicarProducto(producto.codigoBarras);
+    });
+
+    listItem.appendChild(removeButton);
+    listItem.appendChild(duplicateButton);
+    listaProductos.appendChild(listItem);
+  });
+
+  actualizarTotalCobrar();
+}
+
 
   // Función para eliminar un producto de la lista
   function eliminarProducto(codigoBarras) {
@@ -185,5 +191,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</html>
+	<!-- Incluir QuaggaJS -->
+	<script src="js/quagga.js"></script>
+
+	<!-- Agregar tu script de JavaScript -->
+	<script src="js/escanerarchivo.js"></script>
+
+  </html>
 

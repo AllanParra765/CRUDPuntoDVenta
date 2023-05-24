@@ -17,7 +17,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
 /******/
-/******/ 		// Create a new module (and put it into the cache)
+/******/ 		// Create a new module (and put it into the cache)     
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
@@ -1812,7 +1812,7 @@ function topGeneric(list, top, scoreFunc) {
         }
     }
 
-    return queue;
+    return queue; 
 };
 
 function grayArrayFromImage(htmlImage, offsetX, ctx, array) {
