@@ -3,7 +3,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registrar Producto</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Inventario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -24,38 +24,42 @@
 <hr>
 <br>
                         <div class="form-group">
-                            <label for="Nombre_producto">Nombre Producto:</label>
-                            <input type="text" class="form-control" id="Nombre_producto">
+                            <input type="text" class="form-control" id="Nombre_producto" placeholder="Nombre Producto:">
                         </div>
-                        <div class="form-group">
-                            <label for="Cantidad_Entradas">Cantidad de Piezas:</label>
-                            <input type="text" class="form-control" id="Cantidad_Entradas">
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="Cantidad_Entradas" placeholder="Cantidad de Piezas:">
+                            <span class="input-group-text">piezas</span>
                         </div>
-                        <div class="form-group">
-                            <label for="Precio_Compra">Precio de Compra:</label>
-                            <input type="text" class="form-control" id="Precio_Compra">
+                        <br>
+                        <div class="input-group">
+                        <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="Precio_Compra" placeholder="Precio de Compra:">
                         </div>
-                        <div class="form-group">
-                            <label for="Precio_Venta">Precio de Venta:</label>
-                            <input type="text" class="form-control" id="Precio_Venta">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="Precio_Venta" placeholder="Precio de Venta:">
                         </div>
+                       <br>
                         <div class="form-group">
-                        <label for="exampleDataList" class="form-label">Proveedor</label>
-<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="selecciona un Proveedor">
-<datalist id="datalistOptions">
-  <option value="Leche San Marco">
-  <option value="Quesos Bajios">
-  <option value="Bimbo">
-  <option value="Grupo FEMSA">
-  <option value="Barcel">
-</datalist>
-</div>
+                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Selecciona un Proveedor">
+                            <datalist id="datalistOptions">
+                              <option value="Leche San Marco">
+                              <option value="Quesos Bajios">
+                              <option value="Bimbo">
+                              <option value="Grupo FEMSA">
+                              <option value="Barcel">
+                            </datalist>
+                            </div>
+                        
                         <div class="form-group">
-                            <label for="Comentarios">Comentarios:</label>
-                            <textarea class="form-control" id="Comentarios" rows="3"></textarea>
+                            <textarea class="form-control" id="Comentarios" rows="3" placeholder="Comentarios:"></textarea>
                         </div>
                         <button type="button" class="btn btn-success btn-block">
             <i class="fas fa-save"></i> Registrar Producto
+        </button>
+        <button type="button" class="btn btn-secondary btn-block">
+            <i class="fas fa-shopping-cart"></i> Comprar Producto
         </button>
                     </form>
                 </div>
