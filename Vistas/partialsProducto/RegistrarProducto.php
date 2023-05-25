@@ -27,17 +27,22 @@
                             <input type="text" class="form-control" id="Nombre_producto" placeholder="Nombre Producto:">
                         </div>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="Cantidad_Entradas" placeholder="Cantidad de Piezas:">
-                            <span class="input-group-text">piezas</span>
+                            <input type="number" class="form-control" id="Cantidad_Entradas" placeholder="Cantidad de Piezas a Comprar:">
+                            <span class="input-group-text">piezas Compradas</span>
                         </div>
                         <br>
                         <div class="input-group">
-                        <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="Cantidad_Entradas" placeholder="Cantidad de Piezas Existentes:">
+                            <span class="input-group-text">piezas Existentes</span>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                        <span class="input-group-text">Compramos a $</span>
                             <input type="number" class="form-control" id="Precio_Compra" placeholder="Precio de Compra:">
                         </div>
                         <br>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text">Vendemos a $</span>
                             <input type="number" class="form-control" id="Precio_Venta" placeholder="Precio de Venta:">
                         </div>
                        <br>
