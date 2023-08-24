@@ -67,7 +67,7 @@ CREATE TABLE `tb_loginusuario` (
 INSERT INTO `tb_loginusuario` (`id_usuario`, `usuario`, `tipo_usuario`, `contrasena`) VALUES
 (1, 'allan', 'Administrador', '1234'),
 (2, 'allan2', 'Usuario', '1234'),
-(3, 'Ali', 'Administrador', '8c31b65bdecdc9f18b695d7318186fd1feed690d'),
+(3, 'Ali', 'Administrador', '8c31b65bdecdc9f18b695d7318186fd1feed690d'),//contraseña encriptada 12345 Ali
 (4, 'Allan765', 'Administrador', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
 
 --
